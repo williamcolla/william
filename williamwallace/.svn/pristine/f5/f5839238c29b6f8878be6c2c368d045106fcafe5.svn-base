@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <%@include file="estrutura/importBot.jsp"%>
+        <link href="<%=request.getContextPath()%>/resources/css/login.css" rel="stylesheet">
+        <title>Login</title>
+    </head>
+    <body>
+        <%@include file="estrutura/cabecalho.jsp"%>
+        <form:form id="" action="efetuaLogin" commandName="TbCliente" method="POST">
+            <!--Erro no login-->
+            <c:if test="${LoginErro.isMensagem()}">
+                <div class="alert alert-danger">
+                    <h4>${LoginErro.getTituloMensagem()}</h4>
+                    ${LoginErro.getTextMensagem()}
+                </div>
+            </c:if>
+            <div class="panel panel-default">
+                <div class="panel-heading">Formulario de login</div>
+                <div class="panel-body">
+                    <br />
+                    <div class="row justify-content-center">
+                        <div class="col-md-5 col-md-offset-1">
+                            <div class="form-group input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                </span>
+                                <form:label path="emailcli" for="email">E-mail</form:label>
+                                <form:input path="emailcli" type="email" class="form-control" id="email" name="email" placeholder="E-mail" value="${EmailTentativa}" required="required" data-tootle="tooltip"></form:input>             
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row justify-content-center">
+                            <div class="col-md-5 col-md-offeset-1">
+                                <div class="form-group input-group">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-asterisk"></span>
+                                    </span>
+                                <form:label path="senhacli" for="senha">Senha</form:label>
+                                <form:input id="senha" path="senhacli" type="password" class="form-control" name="senha" placeholder="Senha" required="required" data-tootle="tooltip"></form:input>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center col-md10 col-md-offset-1">
+                            <input value="Entrar" type="submit">
+                        </div>
+                    </div>
+                </div>
+        </form:form>
+        <%@include file="estrutura/rodape.jsp"%>
+    </body>
+</html>

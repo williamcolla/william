@@ -1,0 +1,48 @@
+G)wY$'*PD2
+
+
+
+CREATE TABLE projeto.tb_cliente
+(
+  cpf character varying(14) NOT NULL primary key,
+  nomecli character varying(50),
+  emailcli character varying(100) unique,
+  estadocli character varying(20),
+  ruacli character varying(50),
+  cidadecli character varying(50),
+  bairrocli character varying(50),
+  numerocli integer,
+  tipo boolean,
+  senhacli character varying(20),
+
+);
+
+CREATE TABLE projeto.tb_compra
+(
+  idcomp NOT NULL primary key,
+  cpf character varying(14),
+  idprod integer,
+  totalcomp double precision,
+  datacomp character varying(10),
+  qtdcomp integer,
+  foreign key (cpf) references projeto.tb_cliente,
+  foreign key (idprod) references projeto.tb_cliente
+);
+
+CREATE TABLE projeto.tb_produto
+(
+  codigopro NOT NULL primary key,
+  descrpro character varying(100),
+  precopro double precision,
+  nomepro character varying(50),
+  idcate integer,
+  qtdpro integer,
+  imagempro bytea(1),
+  foreign key (idcate) references projeto.tb_categoria
+);
+
+CREATE TABLE projeto.tb_categoria
+(
+  idcat NOT NULL primary key,
+  nomecat character varying(50),
+)

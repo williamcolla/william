@@ -1,0 +1,201 @@
+G)wY$'*PD2
+
+
+
+CREATE TABLE projeto.tb_cliente
+(
+  cpf character varying(14) NOT NULL primary key,
+  nomecli character varying(50),
+  emailcli character varying(100) unique,
+  estadocli character varying(20),
+  ruacli character varying(50),
+  cidadecli character varying(50),
+  bairrocli character varying(50),
+  numerocli integer,
+  tipo boolean,
+  senhacli character varying(20),
+
+);
+
+CREATE TABLE projeto.tb_compra
+(
+  idcomp NOT NULL primary key,
+  cpf character varying(14),
+  idprod integer,
+  totalcomp double precision,
+  datacomp character varying(10),
+  qtdcomp integer,
+  foreign key (cpf) references projeto.tb_cliente,
+  foreign key (idprod) references projeto.tb_cliente
+);
+
+CREATE TABLE projeto.tb_produto
+(
+  codigopro NOT NULL primary key,
+  descrpro character varying(100),
+  precopro numeric,
+  nomepro character varying(50),
+  idcate integer,
+  qtdpro integer,
+  imagempro bytea(1),
+  prodda timestamp without time zone default CURRENT_DATE,
+  foreign key (idcate) references projeto.tb_categoria
+);
+
+CREATE TABLE projeto.tb_categoria
+(
+  idcat NOT NULL primary key,
+  nomecat character varying(50),
+)
+
+
+
+
+
+<jsp:useBean id="cadastrarVarDAO" class="DAO.CategoriaDAO"> 
+                                <form:select name="categoria" path="Categoria.idCategoria" class="form-control animated bounceInDown">
+                                    <form:options items="${cadastrarVarDAO.getCategorias()}" itemValue="idCategoria" itemLabel="nome"></form:options>
+                                </form:select>
+                            </jsp:useBean>
+
+
+
+<jsp:useBean id="dao" class="DAO.ProdutoDAO">
+                    <c:forEach var="produto" items="${dao.buscarProd()}">
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card h-100">
+                                <a href="#"><img id="imagem" class="card-img-top" src="RecuperarImagem?codigopro=${produto.codigopro}" alt=""></a>
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        <a href="#">
+                                            <c:out escapeXml="false" value="${produto.nomepro}"></c:out>
+                                            </a>
+                                        </h4>
+                                        <h5>Preço: 
+                                        <c:out escapeXml="false" value="${produto.precopro}"></c:out>
+                                        </h5>
+                                        <p class="card-text">Quantidade: <c:out escapeXml="false" value="${produto.qtdpro}"></c:out></p>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                                        <div class="row right">
+                                            <a class="btn btn-outline-danger" href="#">Comprar</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </c:forEach>
+                </jsp:useBean>
+
+
+@RequestMapping("filtrarPorCategoria")
+    public @ResponseBody List<Produto> filtrarPorCategoria(@RequestParam(value = "categorias") String categorias) {
+        List<Produto> produtos;
+        System.out.println("lista de categorias: "+categorias);
+        DAOProduto dao = new DAOProduto();
+        produtos = dao.obterPelaCategoria(categorias);
+        return produtos;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@RequestMapping("filtrarPorCategoria")
+    public @ResponseBody String filtrarPorCategoria(@RequestParam(value = "categorias") String categorias) {
+        List<Produto> produtos;
+        System.out.println("lista de categorias: "+categorias);
+        DAOProduto dao = new DAOProduto();
+        produtos = dao.obterPelaCategoria(categorias);
+        JSONArray json = new JSONArray();
+        Map<String, String> data = new HashMap<>();
+        for (int i = 0; i < produtos.size(); i++) {
+            data.put("codigo", produtos.get(i).getCodigo());
+            data.put("nomeCategoria", produtos.get(i).getCategoria().getNomeCategoria());
+            data.put("nomeProduto", produtos.get(i).getNomeProduto());
+            data.put("quantidadeProduto", produtos.get(i).getQuantidadeProduto() + "");
+            data.put("preco", produtos.get(i).getPreco() + "");
+            json.put(data);
+        }
+        String tmp = "{\"data\":" + json.toString() + "}";
+        return tmp;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+$(document).ready(function(){
+    $(".form-check-input").click(function(){
+        var valores_cat = [];
+        $(".form-check-input:checked").each(function(i){
+          valores_cat[i] = $(this).val();
+       }); 
+       
+       $.ajax({
+           method: "POST",
+           url: "filtrarPorCategoria",
+           data: {"categorias" : valores_cat.toString()},
+           dataType: "json",
+           success: function(produtos){
+               $(".carousel").html("");
+               for(var i=0; i<produtos["data"].length; i++){
+                   $(".carousel").append("\
+                    <a class='btn btn-success' href='index'>"+produtos["data"][i]["nomepro"]+"</a>"
+                   );
+               }
+           } 
+       });
+    });
+    
+});
+
+
+
+<div class="col-lg-4 col-md-6 mb-4">
+<div class="card h-100">
+<a href="#"><img id="imagem" class="card-img-top" src="RecuperarImagem?codigopro=${produto.codigopro}" alt=""></a>
+<div class="card-body">
+<h4 class="card-title">
+<a href="#">
+<c:out escapeXml="false" value="${produto.nomepro}"></c:out>
+</a>
+</h4>
+<h5>Preço: 
+<c:out escapeXml="false" value="${produto.precopro}"></c:out>
+</h5>
+<p class="card-text">Quantidade: <c:out escapeXml="false" value="${produto.qtdpro}"></c:out></p>
+</div>
+<div class="card-footer">
+<small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+<div class="row right">
+<a class="btn btn-outline-danger" href="#">Comprar</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>

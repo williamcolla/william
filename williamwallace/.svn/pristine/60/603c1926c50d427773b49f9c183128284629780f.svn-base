@@ -1,0 +1,49 @@
+G)wY$'*PD2
+
+EXCLUIR A TABELA CLIENTE E COLOCAR O EMAIL E CPF COMO UNICOS
+
+
+CREATE TABLE projeto.tb_cliente
+(
+  cpf character varying(14) NOT NULL primary key unique,
+  nomecli character varying(50),
+  emailcli character varying(100) unique,
+  estadocli character varying(20),
+  ruacli character varying(50),
+  cidadecli character varying(50),
+  bairrocli character varying(50),
+  numerocli integer,
+  tipo boolean,
+  senhacli character varying(20),
+
+);
+
+CREATE TABLE projeto.tb_compra
+(
+  idcomp serial NOT NULL primary key,
+  cpf character varying(14),
+  idprod integer,
+  totalcomp double precision,
+  datacomp character varying(10),
+  qtdcomp integer,
+  foreign key (cpf) references projeto.tb_cliente,
+  foreign key (idprod) references projeto.tb_cliente
+);
+
+CREATE TABLE projeto.tb_produto
+(
+  codigopro serial NOT NULL primary key,
+  descrpro character varying(100),
+  precopro double precision,
+  nomepro character varying(50),
+  idcate integer,
+  qtdpro integer,
+  imagempro bit(1),
+  foreign key (idcate) references projeto.tb_categoria
+);
+
+CREATE TABLE projeto.tb_categoria
+(
+  idcat serial NOT NULL primary key,
+  nomecat character varying(50),
+)
