@@ -52,7 +52,7 @@ public class classEmprestimos {
         return this.idEmpreUsu;
     }
     
-    public void setIdEmpreUsu() {
+    public void setIdEmpreUsu(int idEmpreUsu) {
         this.idEmpreUsu = idEmpreUsu;
     }
 }

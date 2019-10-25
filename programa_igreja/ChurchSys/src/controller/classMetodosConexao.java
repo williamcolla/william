@@ -12,7 +12,9 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import model.classConexao;
 import model.classEmprestados;
+import model.classEmprestimos;
 import model.classIgreja;
+import model.classObjetos;
 import model.classUsuario;
 import view.frmLogin;
 import view.frmPrincipal;
@@ -91,6 +93,41 @@ public class classMetodosConexao {
             psmt.close();
         } catch (SQLException ex) {
             System.out.println("Erro no metodo de cadastrar emprestados " + ex);
+        }
+    }
+    
+    public void cadastrarEmprestimos(classEmprestimos empre) throws SQLException {
+        classConexao con = new classConexao();
+        System.out.println("Tudo certo ate no cadastrar emprestimos");
+        
+        try {
+            PreparedStatement psmt = con.conectar().prepareStatement("Insert into tbEmprestimos ( idEmpre, dataRetiEmpre, dataDevoEmpre, idEmpreUsu) values (null, ?, ?, ?)");
+            psmt.setInt(1, empre.getIdEmpre());
+            psmt.setDate(2, empre.getDataReti());
+            psmt.setDate(3, empre.getDataDevo());
+            psmt.setInt(4, empre.getIdEmpreUsu());
+            psmt.executeUpdate();
+            psmt.close();
+        } catch (SQLException ex) {
+            System.out.println("Erro no metodo de cadastrar emprestimos " + ex);
+        }
+    }
+    
+    public void cadastrarObjetos(classObjetos obj) throws SQLException {
+        classConexao con = new classConexao();
+        System.out.println("Tudo certo ate no cadastrar objetos");
+        
+        try {
+            PreparedStatement psmt = con.conectar().prepareStatement("Insert into tbObjetos ( idObj, nomeObj, descricaoObj, idObjIgre, statusObj) values (null, ?, ?, ?, ?)");
+            psmt.setInt(1, obj.getIdObj());
+            psmt.setString(2, obj.getNomeObj());
+            psmt.setString(3, obj.getDescObj());
+            psmt.setInt(4, obj.getIdObjIgre());
+            psmt.setBoolean(5, obj.getStatusObj());
+            psmt.executeUpdate();
+            psmt.close();
+        } catch (SQLException ex) {
+            System.out.println("Erro no metodo de cadastrar objetos " + ex);
         }
     }
 }
