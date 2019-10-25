@@ -42,6 +42,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
@@ -49,10 +50,26 @@
                           <Component id="txtSenhaLogin" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
+=======
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="label" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
+                  <Component id="btnEntrar" min="-2" pref="125" max="-2" attributes="0"/>
+                  <EmptySpace pref="141" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+>>>>>>> william
                           <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
                           <Component id="jLabel1" min="-2" pref="70" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
+<<<<<<< HEAD
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -73,6 +90,19 @@
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
+=======
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="txtSenhaLogin" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="txtNomeLogin" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+>>>>>>> william
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -80,6 +110,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" pref="28" max="-2" attributes="0"/>
+<<<<<<< HEAD
                   <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
                   <Component id="label" min="-2" pref="28" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -95,6 +126,18 @@
                       <EmptySpace pref="275" max="32767" attributes="0"/>
                   </Group>
               </Group>
+=======
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="txtNomeLogin" min="-2" pref="41" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                  <Component id="label" min="-2" pref="28" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="txtSenhaLogin" pref="42" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                  <Component id="btnEntrar" min="-2" pref="35" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+              </Group>
+>>>>>>> william
           </Group>
         </DimensionLayout>
       </Layout>
@@ -107,11 +150,14 @@
             <Property name="text" type="java.lang.String" value="Nome:"/>
           </Properties>
         </Component>
+<<<<<<< HEAD
         <Component class="javax.swing.JTextField" name="txtSenhaLogin">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSenhaLoginActionPerformed"/>
           </Events>
         </Component>
+=======
+>>>>>>> william
         <Component class="javax.swing.JLabel" name="label">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -121,6 +167,12 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNomeLogin">
+<<<<<<< HEAD
+=======
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNomeLoginActionPerformed"/>
+          </Events>
+>>>>>>> william
         </Component>
         <Component class="javax.swing.JButton" name="btnEntrar">
           <Properties>
@@ -133,6 +185,11 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEntrarActionPerformed"/>
           </Events>
         </Component>
+<<<<<<< HEAD
+=======
+        <Component class="javax.swing.JPasswordField" name="txtSenhaLogin">
+        </Component>
+>>>>>>> william
       </SubComponents>
     </Container>
   </SubComponents>
