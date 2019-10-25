@@ -19,7 +19,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     public frmPrincipal() {
         initComponents();
         System.out.println("Nome Principal: " + nomeUsuario);
-        lblNomeUsu.setText("Bem vindo, " + nomeUsuario + "!");
+        lblNomeUsu.setText("Seja bem vindo, " + nomeUsuario + "!");
     }
 
     /**

@@ -16,13 +16,18 @@ public class classUsuario {
     private String senhaUsu;
     private int idUsuIgre;
     
-////    public classUsuario(int idUsu, String nomeUsu, String loginUsu, String senhaUsu, int idUsuIgre){
-////        this.idUsu = idUsu;
-////        this.nomeUsu = nomeUsu;
-////        this.loginUsu = loginUsu;
-////        this.senhaUsu = senhaUsu;
-////        this.idUsuIgre = idUsuIgre;
-////    }  
+    // Construtor
+    public classUsuario(int idUsu, String nomeUsu, String loginUsu, String senhaUsu, int idUsuIgre){
+        this.idUsu = idUsu;
+        this.nomeUsu = nomeUsu;
+        this.loginUsu = loginUsu;
+        this.senhaUsu = senhaUsu;
+        this.idUsuIgre = idUsuIgre;
+    }  
+
+    public classUsuario() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     
     
