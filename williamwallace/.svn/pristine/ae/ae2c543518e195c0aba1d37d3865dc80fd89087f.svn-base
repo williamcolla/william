@@ -1,7 +1,0 @@
-<html>
-	<title>Treinamento</title>
-	<frameset cols="20%, 80%">
-		<frame name="menu" src="./menu-teste.html">
-		<frame name="principal" src="./principal-teste.html">
-	</frameset>
-</html>
