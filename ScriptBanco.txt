@@ -1,0 +1,1 @@
+SELECT setval('portalgbd.noticias_id_noticia_seq', (SELECT max(id_noticia) FROM portalgbd.noticias)::int);
