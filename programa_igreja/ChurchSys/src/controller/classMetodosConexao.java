@@ -11,15 +11,11 @@ import java.sql.SQLException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import model.classConexao;
-<<<<<<< HEAD
-=======
 import model.classEmprestados;
 import model.classEmprestimos;
 import model.classIgreja;
 import model.classObjetos;
->>>>>>> william
 import model.classUsuario;
-import view.frmLogin;
 import view.frmPrincipal;
 
 /**
@@ -28,22 +24,15 @@ import view.frmPrincipal;
  */
 public class classMetodosConexao {
 
-<<<<<<< HEAD
-    public String loginUser(String login, String senha) {
-        classConexao con = new classConexao();
-        classUsuario user = new classUsuario();
-
-        try {
-=======
     // Método para fazer o login do usuário
-    public String loginUser(String login, String senha) {
+    public classUsuario loginUser(String login, String senha) {
         classConexao con = new classConexao(); // Instanciando a classe que faz a conexao com o banco
         classUsuario user = new classUsuario(); // Instanciando a classe do usuário
 
         try {
             // Aqui irá preparar para buscar as informacoes de login e senha do usuario para confirmar se está certo ou nao, caso esteja, realizará o login
->>>>>>> william
-            PreparedStatement psmt = con.conectar().prepareStatement("Select loginUsu, senhaUsu, nomeUsu from tbUsuario where loginUsu = ? and senhaUsu = ?");
+
+            PreparedStatement psmt = con.conectar().prepareStatement("Select loginUsu, senhaUsu, nomeUsu, idIgreUsu from tbUsuario where loginUsu = ? and senhaUsu = ?");
             psmt.setString(1, login);
             psmt.setString(2, senha);
 
@@ -51,33 +40,38 @@ public class classMetodosConexao {
             //atrvés do pstmt.executeQuery()
             ResultSet rs = psmt.executeQuery();
             rs.next();
-<<<<<<< HEAD
-            user.setLoginUsu(rs.getString("loginUsu"));
-            user.setSenhaUsu(rs.getString("senhaUsu"));
-            user.setNomeUsu(rs.getString("nomeUsu"));
+
+//            user.setLoginUsu(rs.getString("loginUsu"));
+//            user.setSenhaUsu(rs.getString("senhaUsu"));
+//            user.setNomeUsu(rs.getString("nomeUsu"));
             
-=======
+
             // Mandando para a classe do usuário as informações que foram buscadas do banco
             user.setLoginUsu(rs.getString("loginUsu"));
             user.setSenhaUsu(rs.getString("senhaUsu"));
             user.setNomeUsu(rs.getString("nomeUsu"));
+            user.setIdIgreUsu(rs.getInt("idIgreUsu"));
+            
+            System.out.println("METODO LOGIN: " + user.getNomeUsu() + " E " + user.getIdIgreUsu());
 
             // Chamando a tela principal caso dê tudo certo
->>>>>>> william
+
             frmPrincipal prin = new frmPrincipal();
             prin.setExtendedState(JFrame.MAXIMIZED_BOTH);
             prin.setVisible(true);
+            
+            
         } catch (SQLException ex) {
-<<<<<<< HEAD
+
             JOptionPane.showMessageDialog(null, "LOGIN INVÁLIDO, VERIFIQUE AS INFORMAÇÕES " + ex);
-=======
+
             System.out.println("Erro no metodo de login " + ex);
->>>>>>> william
+
         }
-        return user.getNomeUsu();
+        return user;
     }
 
-<<<<<<< HEAD
+
 //    public void cadastrarIgreja(classIgreja ig) throws SQLException {
 //        classConexao con = new classConexao();
 //        
@@ -88,7 +82,7 @@ public class classMetodosConexao {
 //            
 //        }
 //    }
-=======
+
     // Função para realizar o cadastro das igrejas
     public void cadastrarIgreja(classIgreja igr) throws SQLException {
         classConexao con = new classConexao(); // Classe para realizar a conexão com o banco de dados
@@ -164,5 +158,5 @@ public class classMetodosConexao {
             System.out.println("Erro no metodo de cadastrar objetos " + ex);
         }
     }
->>>>>>> william
+
 }

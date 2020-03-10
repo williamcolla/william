@@ -6,6 +6,7 @@
 package view;
 
 import static view.frmLogin.nomeUsuario;
+import model.classUsuario;
 
 /**
  *
@@ -18,12 +19,13 @@ public class frmPrincipal extends javax.swing.JFrame {
      */
     public frmPrincipal() {
         initComponents();
-        System.out.println("Nome Principal: " + nomeUsuario);
-<<<<<<< HEAD
-        lblNomeUsu.setText("Bem vindo, " + nomeUsuario + "!");
-=======
-        lblNomeUsu.setText("Seja bem vindo, " + nomeUsuario + "!");
->>>>>>> william
+        classUsuario user = new classUsuario();
+        System.out.println("NOME: " + user.getNomeUsu());
+
+        //lblNomeUsu.setText("Bem vindo, " + nomeUsuario + "!");
+
+        //lblNomeUsu.setText("Seja bem vindo, " + nomeUsuario + "!");
+
     }
 
     /**
@@ -35,28 +37,33 @@ public class frmPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        lblNomeUsu = new javax.swing.JLabel();
+        panelInicial = new javax.swing.JPanel();
+        btnTeste = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblNomeUsu.setText("jLabel1");
+        btnTeste.setText("jButton1");
+        btnTeste.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTesteActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(512, Short.MAX_VALUE)
-                .addComponent(lblNomeUsu)
-                .addGap(104, 104, 104))
+        javax.swing.GroupLayout panelInicialLayout = new javax.swing.GroupLayout(panelInicial);
+        panelInicial.setLayout(panelInicialLayout);
+        panelInicialLayout.setHorizontalGroup(
+            panelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelInicialLayout.createSequentialGroup()
+                .addGap(161, 161, 161)
+                .addComponent(btnTeste)
+                .addContainerGap(416, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblNomeUsu)
-                .addContainerGap(432, Short.MAX_VALUE))
+        panelInicialLayout.setVerticalGroup(
+            panelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelInicialLayout.createSequentialGroup()
+                .addGap(149, 149, 149)
+                .addComponent(btnTeste)
+                .addContainerGap(285, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -65,19 +72,24 @@ public class frmPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelInicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelInicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTesteActionPerformed
+        classUsuario user = new classUsuario();
+        System.out.println("NO BOTAO: " + user.getNomeUsu());
+    }//GEN-LAST:event_btnTesteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -116,7 +128,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblNomeUsu;
+    private javax.swing.JButton btnTeste;
+    private javax.swing.JPanel panelInicial;
     // End of variables declaration//GEN-END:variables
 }
